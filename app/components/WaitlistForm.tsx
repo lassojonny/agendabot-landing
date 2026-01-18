@@ -16,19 +16,22 @@ export function WaitlistForm() {
         setStatus('loading');
 
         try {
-            // Por ahora, simulamos el envío
-            // Más adelante conectaremos con Google Sheets o API
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // Enviar a FormSubmit para recibir emails
+            const formData = new FormData();
+            formData.append('name', name);
+            formData.append('email', email);
+            formData.append('businessType', businessType);
+            formData.append('timestamp', new Date().toLocaleString('es-CO'));
+            formData.append('_subject', `Nueva suscripción a AgendaBot: ${businessType}`);
+            formData.append('_captcha', 'false'); // Deshabilitar captcha
+            formData.append('_template', 'table'); // Formato tabla
 
-            // Guardar en localStorage temporalmente
-            const leads = JSON.parse(localStorage.getItem('waitlist') || '[]');
-            leads.push({
-                email,
-                name,
-                businessType,
-                timestamp: new Date().toISOString(),
+            const response = await fetch('https://formsubmit.co/lassojonny@gmail.com', {
+                method: 'POST',
+                body: formData,
             });
-            localStorage.setItem('waitlist', JSON.stringify(leads));
+
+            if (!response.ok) throw new Error('Error sending form');
 
             setStatus('success');
             setMessage('¡Genial! Te avisaremos cuando estemos listos 🎉');
@@ -44,6 +47,7 @@ export function WaitlistForm() {
         } catch (error) {
             setStatus('error');
             setMessage('Algo salió mal. Por favor intenta de nuevo.');
+            console.error('Form submission error:', error);
         }
     };
 
