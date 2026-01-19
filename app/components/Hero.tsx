@@ -40,14 +40,16 @@ export function Hero() {
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
                             className="px-8 py-4 bg-gradient-to-r from-[#00ff88] to-[#00cc6a] text-black font-semibold rounded-lg shadow-xl shadow-[#00ff88]/30 hover:shadow-[#00ff88]/50 transition-all"
                         >
-                            🚀 Pruébalo Gratis
+                            🚀 Únete a la Lista
                         </motion.button>
 
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
+                            onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
                             className="px-8 py-4 glass rounded-lg font-medium hover:bg-white/5 transition-all"
                         >
                             Ver Demo 📹

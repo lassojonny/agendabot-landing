@@ -5,7 +5,7 @@ import { WaitlistForm } from './WaitlistForm';
 
 export function WaitlistSection() {
     return (
-        <section className="py-20 px-6">
+        <section id="waitlist" className="py-20 px-6">
             <div className="max-w-2xl mx-auto">
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}

@@ -93,9 +93,10 @@ export function Pricing() {
                             <motion.button
                                 whileHover={{ scale: 1.02 }}
                                 whileTap={{ scale: 0.98 }}
+                                onClick={() => document.getElementById('waitlist')?.scrollIntoView({ behavior: 'smooth' })}
                                 className={`w-full py-4 rounded-lg font-bold transition-all ${plan.popular
-                                        ? 'bg-gradient-to-r from-[#00ff88] to-[#00cc6a] text-black shadow-xl shadow-[#00ff88]/30 hover:shadow-[#00ff88]/50'
-                                        : 'glass hover:bg-white/5'
+                                    ? 'bg-gradient-to-r from-[#00ff88] to-[#00cc6a] text-black shadow-xl shadow-[#00ff88]/30 hover:shadow-[#00ff88]/50'
+                                    : 'glass hover:bg-white/5'
                                     }`}
                             >
                                 {plan.cta}
